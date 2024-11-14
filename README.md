@@ -19,3 +19,5 @@
     "port":"<postgres local port>"
   }
 ```
+
+- once you added above config run `npx sequelize db:create` inside terminal
