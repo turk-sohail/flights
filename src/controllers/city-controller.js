@@ -38,6 +38,25 @@ const getAll = async (req, res) => {
   }
 };
 
+const createMany = async (req, res) => {
+  try {
+    const cities = await CityService.createManyCities(req.body);
+    res.status(200).json({
+      data: cities,
+      success: true,
+      message: "successfully created cities",
+      error: {},
+    });
+  } catch (error) {
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: error.message,
+      error: error,
+    });
+  }
+};
+
 const getCityById = async (req, res) => {
   try {
     const city = await CityService.getCityById(req.params.id);
@@ -105,4 +124,5 @@ module.exports = {
   getCityById,
   updateCity,
   deleteCity,
+  createMany,
 };

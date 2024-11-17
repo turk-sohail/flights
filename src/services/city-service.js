@@ -30,6 +30,16 @@ class CityService {
     }
   }
 
+  async createManyCities(cities) {
+    try {
+      const city = await this.cityRepository.createManyCities(cities);
+      return city;
+    } catch (error) {
+      console.log("something went wrong in city service");
+      throw error;
+    }
+  }
+
   async getCityById(cityId) {
     try {
       const city = await this.cityRepository.getCityById(cityId);
