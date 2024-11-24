@@ -70,13 +70,14 @@ class FlightRepository {
     }
   }
 
-  async updateFlight({ flightId, name }) {
-    console.log(flightId, name);
+  async updateFlight(flightId, data) {
+    //console.log(prevFlight.dataValues, "shit");
     try {
-      const flight = await Flights.update(name, {
+      const flight = await Flights.update(data, {
         returning: true,
         where: { id: flightId },
       });
+      // const flight = await prevFlight.update(data);
       return flight;
     } catch (error) {
       console.log("something went wrong in flight repository");

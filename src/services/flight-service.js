@@ -34,12 +34,24 @@ class FlightService {
       throw error;
     }
   }
-  async getFlight(airplaneId) {
+  async getFlight(flightId) {
     try {
-      const flight = await this.flightRepository.getByAirplaneId(airplaneId);
+      const flight = await this.flightRepository.getFlightById(flightId);
       return flight;
     } catch (error) {
       console.log("something went wrong in flight service");
+      throw error;
+    }
+  }
+
+  async updateFlight(flightId, data) {
+    console.log(data);
+    try {
+      const flight = await this.flightRepository.updateFlight(flightId, data);
+      return flight;
+    } catch (error) {
+      console.log("something went wrong in flight service");
+      console.log(error);
       throw error;
     }
   }
@@ -55,6 +67,16 @@ class FlightService {
   //     throw error;
   //   }
   // }
+
+  async deleteFlight(flightId) {
+    try {
+      const flight = await this.flightRepository.deleteFlight(flightId);
+      return flight;
+    } catch (error) {
+      console.log("something went wrong in flight service");
+      throw error;
+    }
+  }
 }
 
 module.exports = FlightService;
